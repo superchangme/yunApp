@@ -4,7 +4,8 @@ jQuery(function($){
                 changeHash:false,
                 currentPage:null,
                 current:1,
-                saveUrl:"http://192.168.1.105:3000/uploadImage"
+                saveUrl:"http://localhost/temp/yunApp/index.php/index/upload",
+                shareUrl:"http://localhost/temp/yunApp/index.php/index/shareCounting"
             },hashMap={"#page_1":".page_1","#page_2":".page_2","#page_3":"page_3","#page_4":".page_4","#page_5":".page_5"},
             $pages=$(".main .page"),
             isAnimate=false,
@@ -24,7 +25,10 @@ jQuery(function($){
             IS_SAVE=false,
             PHOTO_PATH,
     saveAndShare=$("#saveAndShare"),
-            LOCK_PHOTO=false;
+            LOCK_PHOTO=false,
+            FROM_ID,
+            SHARE_COUNT,
+            SHARE_ID;
 
         var posX=0, posY=0,
             lastPosX=0, lastPosY=0,
@@ -355,6 +359,9 @@ jQuery(function($){
     //保存分享
     saveAndShare.bind("click",function(){
             var data=canvasContainer[0].toDataURL("image/jpeg",0.5);
+        var img=new Image;
+        img.src=data;
+        $(".photo-box").append(img);
              var work=WorkMan("share");
         //上传图片给vion
         if(IS_SAVE){
@@ -383,5 +390,20 @@ jQuery(function($){
         }
      //   if(e.code==)
     });
-
+    //拿图片链接
+    $.getJSON("shareCounting","id=",function(data){
+         if(typeof data===Object){
+             if(data.path){
+                 sharePhoto.attr("src",data.path);
+             }
+             if(data.shared){
+                SHARE_COUNT=parseInt(data.shared)+1;
+             }
+             if(data.id){
+                 FROM_ID=datg.id;
+             }
+         }else{
+            //wrong
+         }
+    }).error(function(err) {errorLogs.push(err); });
     });

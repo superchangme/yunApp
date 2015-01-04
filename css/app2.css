@@ -1,10 +1,13 @@
+html{
+    height:504px!important;
+}
 
 html,body{
     font-size: 10px;
     -webkit-text-size-adjust:100%;
     padding: 0;
     margin: 0;
-    font-family:Tahoma,Arial,Roboto,”Droid Sans”,”Helvetica Neue”,”Droid Sans Fallback”,”Heiti SC”,sans-self;
+    font-family:Tahoma,Arial,Roboto,"Droid Sans","Helvetica Neue","Droid Sans Fallback","Heiti SC",sans-self;
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -19,13 +22,15 @@ body{
     margin: 10px auto;
 }
 .photo-box img{
-    transform-origin: 0 0;
+    width: 100%;
+    height: 100%;
+   /* transform-origin: 0 0;
     -webkit-transform-origin: 0 0;
     -webkit-transform: scale(0.5);
     -moz-transform: scale(0.5);
     -ms-transform: scale(0.5);
     -o-transform: scale(0.5);
-    transform: scale(0.5);
+    transform: scale(0.5);*/
 }
 .main{
     width: 100%;
@@ -930,7 +935,7 @@ input::-webkit-input-placeholder { color:#333333; }
 }
 .photo-step{
     /*border: 2px solid red;*/
-    margin: 20px auto 0;
+    margin: 10px auto 0;
 }
 @media screen and (max-height: 503px)  {
     [data-step="3"]  button,[data-step="4"]  button {
@@ -958,7 +963,7 @@ input::-webkit-input-placeholder { color:#333333; }
 @media screen and (min-height: 504px)  {
     .photo-step{
         /*border: 2px solid red;*/
-        margin: 40px auto 0;
+        margin: 20px auto 0;
     }
     .red{
         line-height: 40px;
@@ -979,9 +984,9 @@ input::-webkit-input-placeholder { color:#333333; }
 .left{
     text-align: left!important;
 }
-/*button,.takeBox{
+button,.takeBox{
     background-size: 100%!important;
-}*/
+}
 
 *{
     outline: none;

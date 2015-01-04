@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/app2.css">
+</head>
+<body>
+<div class="main" id="app">
+    <div class="page page_1"  data-hash="page_5">
+        <div class="page-inner">
+            <div class="photo-box">
+                <img src="img/photo-demo.jpg"/>
+            </div>
+            <div>
+                <button id="goShare">我要分享</button>
+                <button>制作宣言</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="shareMask" >
+    <div class="bdsharebuttonbox" data-tag="share_1">
+        <button id="close" class="close">关闭分享</button>
+        <h2>分享到</h2>
+        <div class="item">
+            <a class="bds_qzone" data-cmd="qzone" ></a>
+            <div>QQ空间</div>
+        </div>
+        <div class="item">
+            <a class="bds_tqq" data-cmd="tqq"></a>
+            <div>腾讯微博</div>
+        </div>
+        <div class="item">
+            <a class="bds_renren" data-cmd="renren"></a>
+            <div>人人</div>
+        </div>
+        <div class="item">
+            <a class="bds_tsina" data-cmd="tsina"></a>
+            <div>新浪微博</div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    var share=document.getElementById("goShare"),mask=document.getElementById("shareMask"),close=document.getElementById("close");
+    share.addEventListener("click",function(){
+        mask.className="open";
+    });
+    close.addEventListener("click",function(){
+        mask.className="";
+    });
+    window._bd_share_config = {
+        common : {
+            bdText : window.location.title,
+            bdDesc : '好好玩快来吧',
+            bdUrl : window.location.href,
+            bdPic : "img/photo-demo.jpg"
+        },
+        share : [{
+            "bdSize" : 32
+        }]
+    };
+    with(document) {
+        var script = (getElementsByTagName('head')[0] || body).appendChild(createElement('script'));
+        script.id = "bShareJs";
+        script.src = 'http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)
+    };
+</script>
+</html>
