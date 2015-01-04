@@ -1,0 +1,988 @@
+
+html,body{
+    font-size: 10px;
+    -webkit-text-size-adjust:100%;
+    padding: 0;
+    margin: 0;
+    font-family:Tahoma,Arial,Roboto,”Droid Sans”,”Helvetica Neue”,”Droid Sans Fallback”,”Heiti SC”,sans-self;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+body{
+
+}
+.photo-box{
+    width:285px;
+    height:320px;
+    border:3px solid white;
+    margin: 10px auto;
+}
+.photo-box img{
+    transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+    -webkit-transform: scale(0.5);
+    -moz-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    -o-transform: scale(0.5);
+    transform: scale(0.5);
+}
+.main{
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    /*
+                background: #fff;
+    */
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom:0;
+    right: 0;
+}
+.main{
+    transform-style: preserve-3d;
+    perspective:800px;
+}
+.page_1{
+   -webkit-animtion:flip 1s infinite;
+}
+.page_2{
+    background: blue;
+}
+@-webkit-keyframes flip {
+    0%{
+        -webkit-transform:rotate3d(0,1,0,0deg);
+    }
+
+    10%{
+        -webkit-transform:rotate3d(0,1,0,90deg);
+    }
+}
+.page{
+    background:url(../img/bg.jpg)  no-repeat center;
+    background-size: cover;
+}
+.page,.scr{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    position: absolute;
+}
+.page.current{
+    z-index: 2;
+    opacity: 1;
+}
+.page.active{
+    z-index: 3;
+    opacity: 1;
+}
+.frame{
+    display: none;
+}
+
+/*
+.page_1{
+    background: blue!important;
+}
+.page_2{
+    background: red!important;
+}
+.page_3{
+    background: yellow!important;
+}
+.page_4{
+    background: green!important;
+}
+.page_5{
+    background: salmon!important;
+}
+*/
+
+.page{
+   /* background: url(../img/bg.jpg) no-repeat center;
+    background-size: 100% 100%;*/
+    float:left;
+    top:0;
+    left:0;
+}
+.scr{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1000;
+}
+p{
+    margin: 0;
+}
+
+/*///////////////////////////////////////////////////////////////       音乐播放        //////*/
+.volume.scr{
+    z-index:6000;
+    width: 22px;
+    height: 22px;
+    right: 2.6rem;
+    top: 1.3rem;
+    left: auto;
+}
+.volumeOff.sprite,.volumeOn.sprite{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding: 0;
+    -webkit-transform-origin: 50% 50%;
+
+}
+.volumeOff{
+    -webkit-animation: reverseRotataZ 1.2s infinite linear ;
+}
+@-webkit-keyframes reverseRotataZ{
+    0%{
+        -webkit-transform: rotateZ(0deg) scale(0.5);;
+    }
+    100%{
+        -webkit-transform: rotateZ(-360deg) scale(0.5);;
+    }
+}
+/*///////////////////////////////////////////////////////////////      全局 字体大小 属性       //////*/
+h1,h2,h3,h4,h5,h6{
+    display: inline;
+    vertical-align: bottom;
+}
+h1{
+    font-size: 5rem;
+}
+h2{
+    font-size: 4rem;
+}
+h3{
+    font-size: 3.6rem;
+}
+h4{
+    font-size: 2.4rem;
+}
+h5{
+    font-size: 1.4rem;
+}
+h6{
+    font-size: 1.2rem;
+}
+
+.frame{
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    -webkit-backface-visibility:visible;
+    -webkit-transform-origin:center center;
+    z-index:1600;
+}
+/*///////////////////////////////////////////////////////////////      图片属性         //////*/
+.frame-inner img{
+    width: 100%;
+    display: block;
+}
+/*///////////////////////////////////////////////////////////////      动画元素外容器的属性         //////*/
+.frame-inner {
+    text-align: center;
+    color: #fff;
+    position: relative;
+}
+/*///////////////////////////////////////////////////////////////      page1  飞机       //////*/
+#plane .frame-inner{
+    width: 56%;
+}
+.current #plane.animate{
+    -webkit-animation:plane 1.8s 0.2s 1 ease-in-out both  ;
+}
+#plane{
+    -webkit-transform:translateX(-100%);
+}
+@-webkit-keyframes plane{
+    0%{
+        -webkit-transform:translateX(-100%) translateY(40%) scaleX(0.3) scaleY(0.3);
+    }
+    100%{
+        -webkit-transform:translateX(29%) translateY(10%) scaleX(1) scaleY(1);
+    }
+}
+/*///////////////////////////////////////////////////////////////      page1  圆圈箭头       //////*/
+#circle{
+    -webkit-transform:translateX(50%) translateY(87%);
+}
+#circle .frame-inner{
+    width: 10.4%;
+    left: -5.2%;
+}
+
+
+
+#arrow .frame-inner{
+    width: 4.6%;
+    left: -2.3%;
+}
+.current #arrow.animate{
+    -webkit-animation: arrow 0.9s  linear infinite;
+}
+#arrow{
+    opacity: 0;
+    -webkit-transform:translateX(50%) translateY(91%);
+}
+@-webkit-keyframes arrow{
+    0%, 30% {
+        opacity: 0;
+        -webkit-transform: translate(50%, 91%);
+    }
+    60% {
+        opacity: 1;
+        -webkit-transform:  translate(50%, 89%);
+    }
+    100% {
+        opacity: 0;
+        -webkit-transform:  translate(50%, 87%);
+    }
+}
+
+
+/*///////////////////////////////////////////////////////////////      page1  底部树枝       //////*/
+#tree .frame-inner{
+    width: 100%;
+    bottom: 0;
+    position: absolute; bottom: 0%;
+}
+.current #tree.animate{
+    -webkit-animation:tree 1.2s 0s 1 ease-in-out both  ;
+}
+#tree{
+    opacity: 0;
+}
+@-webkit-keyframes tree{
+    0%{
+        opacity: 0;
+        -webkit-transform:translateY(10%);
+    }
+    100%{
+        opacity: 1;
+        -webkit-transform:translateY(0%);
+    }
+}
+/*///////////////////////////////////////////////////////////////      page1  两行文字       //////*/
+/* 初始化  （位置 不透明度 缩放）*/
+#textBox1{
+    -webkit-transform:translateX(-100%);/* 默认水平偏移  从左到右*/
+    top: 37%;
+}
+/* 装载容器 属性*/
+#textBox1 .frame-inner{
+    width: 100%;
+    margin-left: -6rem
+}
+/* 正在运动中*/
+.current #textBox1.animate{
+    -webkit-animation:textBox1 1s 0.9s 1 ease-in-out both  ;
+}
+@-webkit-keyframes textBox1{
+    0%{
+        -webkit-transform:translateX(-100%);
+    }
+    100%{
+        -webkit-transform:translateX(0%);
+    }
+}
+
+
+
+#textBox2{
+    -webkit-transform:translateX(100%);
+    top: 37%;
+}
+#textBox2 .frame-inner{
+    width: 100%;
+    margin-top: 6.5rem;
+    margin-left: 2rem;
+}
+.current #textBox2.animate{
+    -webkit-animation:textBox2 1s 0.9s 1 ease-in-out both  ;
+}
+@-webkit-keyframes textBox2{
+    0%{
+        -webkit-transform:translateX(100%);
+    }
+    100%{
+        -webkit-transform:translateX(0%);
+    }
+}
+
+/*///////////////////////////////////////////////////////////////      page2  ps图       //////*/
+#ps .frame-inner{
+    width: 16.8%;
+}
+/*位置定位*/
+#ps {
+    -webkit-transform:translateX(24%) translateY(37.5%);
+}
+
+/*frame inner 内部的元素自定义动画*/
+.current #ps.animate img{
+    -webkit-animation:ps 0.7s 0s 1 ease-in-out both  ;
+}
+#ps.animate img{
+    opacity: 0;
+}
+@-webkit-keyframes ps{
+    0%{
+        opacity: 0;
+        -webkit-transform: scale(0.05) ;
+    }
+    50%{
+        opacity: 1;
+        -webkit-transform: scale(1.05) ;
+    }
+    70%{
+        -webkit-transform: scale(0.9) ;
+    }
+    100%{
+        opacity: 1;
+        -webkit-transform: scale(1) ;
+    }
+}
+/*///////////////////////////////////////////////////////////////      page2  ai图       //////*/
+#ai .frame-inner{
+    width: 17%;
+}
+/*位置定位*/
+#ai {
+    -webkit-transform:translateX(38%) translateY(58%);
+}
+/*frame inner 内部的元素自定义动画*/
+.current #ai.animate img{
+    -webkit-animation:ai 0.7s 0.2s 1 ease-in-out both  ;
+}
+#ai.animate img{
+    opacity: 0;
+}
+@-webkit-keyframes ai{
+    0%{
+        opacity: 0;
+        -webkit-transform: scale(0.05) ;
+    }
+    50%{
+        opacity: 1;
+        -webkit-transform: scale(1.05) ;
+    }
+    70%{
+        -webkit-transform: scale(0.9) ;
+    }
+    100%{
+        opacity: 1;
+        -webkit-transform: scale(1) ;
+    }
+}
+
+/*///////////////////////////////////////////////////////////////      page2  怪物       //////*/
+#master .frame-inner{
+    width: 34%;
+}
+.current #master.animate{
+    -webkit-animation:master 1.2s .2s 1 ease-in-out both  ;
+}
+#master{
+    opacity: 0;
+}
+#master{
+    -webkit-transform:translateX(62%) translateY(35%);
+}
+@-webkit-keyframes master{
+    0%{
+        opacity: 0;
+        -webkit-transform:translateX(65%) translateY(35%);
+    }
+    100%{
+        opacity: 1;
+        -webkit-transform:translateX(62%) translateY(35%);
+    }
+}
+
+/*///////////////////////////////////////////////////////////////      page2  恐龙       //////*/
+#dinosaur .frame-inner{
+    width: 53%;
+}
+.current #dinosaur.animate{
+    -webkit-animation:dinosaur 1.2s .2s 1 ease-in-out both  ;
+}
+#dinosaur{
+    opacity: 0;
+}
+#dinosaur{
+    -webkit-transform:translateY(70%);
+}
+@-webkit-keyframes dinosaur{
+    0%{
+        opacity: 0;
+        -webkit-transform:translateX(-3%) translateY(70%);
+    }
+    100%{
+        opacity: 1;
+        -webkit-transform:translateX(0%) translateY(70%);
+    }
+}
+/*///////////////////////////////////////////////////////////////      page2  两行文字       //////*/
+#textBox3{
+    -webkit-transform:translateX(100%);
+    top: -5%;
+    left: 19%;
+}
+#textBox3 .frame-inner{
+    width: 100%;
+    margin-top: 6.5rem;
+    text-align: left;
+}
+.current #textBox3.animate{
+    -webkit-animation:textBox3 1s 0s 1 ease-in-out forwards  ;
+}
+@-webkit-keyframes textBox3{
+    0%{
+        -webkit-transform:translateX(100%);
+    }
+    100%{
+        -webkit-transform:translateX(0%);
+    }
+}
+
+#textBox4{
+    -webkit-transform:translateX(100%);
+    top: 7%;
+    left: 19%;
+}
+#textBox4 .frame-inner{
+    width: 100%;
+    margin-top: 6.5rem;
+    text-align: left;
+}
+.current #textBox4.animate{
+    -webkit-animation:textBox4 1s 0s 1 ease-in-out forwards  ;
+}
+@-webkit-keyframes textBox4{
+    0%{
+        -webkit-transform:translateX(100%);
+    }
+    100%{
+        -webkit-transform:translateX(0%);
+    }
+}
+
+
+/*///////////////////////////////////////////////////////////////      屏幕宽度超过321  执行的属性 多屏兼容设置      //////*/
+@media screen and (min-width:321px){
+
+    /* 装载容器 属性*/
+    #textBox1 .frame-inner{
+        margin-left: -7rem;
+    }
+    /* 装载容器 属性*/
+    #textBox2 .frame-inner{
+        margin-left: 5rem;
+    }
+    /* 装载容器 属性*/
+    #textBox3 .frame-inner{
+        margin-top: 8rem;
+    }
+    /* 装载容器 属性*/
+    #textBox4 .frame-inner{
+        margin-top: 11rem;
+    }
+
+    #dinosaur{
+        -webkit-transform:translateY(750%);
+    }
+    @-webkit-keyframes dinosaur{
+        0%{
+            opacity: 0;
+            -webkit-transform:translateX(5%) translateY(75%);
+        }
+        100%{
+            opacity: 1;
+            -webkit-transform:translateX(8%) translateY(75%);
+        }
+    }
+
+}
+
+
+
+.svg{
+    opacity: 0;
+    height: 160%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1500;
+    position: absolute;
+    -webkit-transition: opacity 1s;
+    transition: opacity 1s;
+
+}
+.inited .svg{
+    opacity: 1;
+}
+
+canvas.eraser{
+    -webkit-filter: blur(1px)  brightness(.7);
+    -moz-filter: blur(3px);
+    -ms-filter: blur(3px);
+    filter: blur(3px);
+}
+.page_loading{
+    padding-left: 50%;
+    z-index: 9999;
+    background: black;
+}
+.loadingTxt{
+    color: #fff;
+    font-size: 1.5rem;
+    float: left;
+    margin-left: 5px;
+    left: -42px;
+    position: relative;
+    top: 50%;
+    margin-top: -2.5rem;
+}
+.barlittle {
+    background-color: #2187e7;
+    /*background-image: -moz-linear-gradient(45deg, #fff 25%, #a0eaff);*/
+    background-image: -webkit-linear-gradient(45deg, #fff 25%, #a0eaff);
+    width: 10px;
+    height: 10px;
+    float: left;
+    margin-left: 5px;
+    left: -42px;
+    position: relative;
+    top: 50%;
+    opacity: 0.1;
+    -moz-transform: scale(0.7);
+    -webkit-transform: scale(0.7);
+    -moz-animation: move 1s infinite linear;
+    -webkit-animation: move 1s infinite linear;
+
+}
+
+#block_1 {
+    -moz-animation-delay: .4s;
+    -webkit-animation-delay: .4s;
+}
+
+#block_2 {
+    -moz-animation-delay: .3s;
+    -webkit-animation-delay: .3s;
+}
+
+#block_3 {
+    -moz-animation-delay: .2s;
+    -webkit-animation-delay: .2s;
+}
+
+#block_4 {
+    -moz-animation-delay: .3s;
+    -webkit-animation-delay: .3s;
+}
+
+#block_5 {
+    -moz-animation-delay: .4s;
+    -webkit-animation-delay: .4s;
+}
+
+@-webkit-keyframes move {
+    0% {
+        -webkit-transform: scale(1.2);
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform: scale(0.7);
+        opacity: 0.1;
+    }
+}
+.down{
+    -webkit-transform: translate3d(0, -100%, 0);
+    -moz-transform: translate3d(0, -100%, 0);
+    -ms-transform: translate3d(0, -100%, 0);
+    -o-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);.
+}
+.up{
+    -webkit-transform: translate3d(0,100%,0);
+    -moz-transform: translate3d(0,100%,0);
+    -ms-transform: translate3d(0,100%,0);
+    -o-transform: translate3d(0,100%,0);
+    transform: translate3d(0,100%,0);
+}
+
+.text-box h2{
+    font-size:12px;
+   /* width:200px;*/
+    margin:0 auto;
+    text-align: center;
+    color:#1b1464;
+}
+#takePhoto{
+    opacity: 0;
+    height:58px;
+    display: block;
+}
+.takeBox{
+    margin: 0 auto;
+    width:58px;
+    height:58px;
+    background: url(../img/take-photo.png?__sprite) no-repeat;
+}
+.back{
+    margin: 0 auto;
+    width:28px;
+    height:22px;
+    background: url(../img/back.png?__sprite) no-repeat;
+}
+.queue-loading span{
+    padding: 0;
+    border:5px solid red;
+    border-radius: 100%;
+    display: inline-block;
+}
+.open .sp3{
+    -webkit-animation: sp3 1s  linear 0s infinite  ;
+    animation: sp3 1s  linear 0s infinite  ;
+}
+.open .sp2{
+    -webkit-animation: sp2 1s  linear 0s infinite  ;
+    animation: sp2 1s  linear 0s infinite  ;
+}
+.open .sp1{
+    -webkit-animation: sp1 1s linear  0s infinite  ;
+    animation: sp1 1s linear  0s infinite  ;
+}
+@-webkit-keyframes sp1 {
+    0%{
+        opacity: 0;
+        -webkit-transform: translate3d(-10px,0,0);
+        -webkit-animation-timing-function: ease-in;
+    }
+    50%{
+        opacity: 1;
+        -webkit-transform: translate3d(6px,0,0);
+    }
+    100%{
+        opacity: 1;
+        -webkit-transform: translate3d(6px,0,0);
+    }
+}
+@keyframes sp1 {
+    0%{
+        opacity: 0;
+        transform: translate3d(-10px,0,0);
+        animation-timing-function: ease-in;
+    }
+    50%{
+        opacity: 1;
+        transform: translate3d(6px,0,0);
+    }
+    100%{
+        opacity: 1;
+        transform: translate3d(6px,0,0);
+    }
+}
+@-webkit-keyframes sp2 {
+    0%{
+        -webkit-transform: translate3d(0,0,0);
+    }
+    50%{
+        -webkit-transform: translate3d(6px,0,0);
+    }
+    100%{
+        -webkit-transform: translate3d(6px,0,0);
+    }
+}
+@keyframes sp2 {
+    0%{
+        transform: translate3d(0,0,0);
+    }
+    50%{
+        transform: translate3d(6px,0,0);
+    }
+    100%{
+        transform: translate3d(6px,0,0);
+    }
+}
+@-webkit-keyframes sp3 {
+    0%{
+        -webkit-transform: translate3d(0,0,0);
+    }
+    50%{
+        opacity: 1;
+        -webkit-transform: translate3d(6px,0,0);
+        -webkit-animation-timing-function: ease-in;
+    }
+    100%{
+        opacity: 0;
+        -webkit-transform: translate3d(16px,0,0);
+    }
+}
+@keyframes sp3 {
+    0%{
+        transform: translate3d(0,0,0);
+    }
+    50%{
+        opacity: 1;
+        transform: translate3d(6px,0,0);
+        animation-timing-function: ease-in;
+    }
+    100%{
+        opacity: 0;
+        transform: translate3d(16px,0,0);
+    }
+}
+#waitLoad{
+    opacity: 0;
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    z-index: 0;
+    transition: opacity 0.6s;
+    text-align: center;
+    background: rgba(0,0,0,0.8);
+}
+#waitLoad.open{
+    opacity: 1;
+    z-index: 100;
+}
+#waitLoad .queue-loading{
+    position: absolute;
+    width:30px;
+    height: 16px;
+    top:50%;
+    left:50%;
+    -webkit-transform: translate3d(-50%,-50%,0);
+    -moz-transform: translate3d(-50%,-50%,0);
+    -ms-transform: translate3d(-50%,-50%,0);
+    -o-transform: translate3d(-50%,-50%,0);
+    transform: translate3d(-50%,-50%,0);
+}
+#waitLoad  .text{
+    position: absolute;
+    top: 50%;
+    text-align: center;
+    width: 100%;
+    margin-top: 20px;
+    color: white;
+    font-size: 14px;
+}
+#canvasContainer{
+    display: none;
+}
+.s-back,.s-next{
+    border: none;
+    width:28px;
+    height:22px;
+    overflow: hidden;
+    text-indent: 999rem;
+    white-space: nowrap;
+}
+.s-ok{
+    border: none;
+    width:30px;
+    height:18px;
+    overflow: hidden;
+    text-indent: 999rem;
+    white-space: nowrap;
+    background: url(../img/ok.png?__sprite) no-repeat;
+}
+.s-save{
+    width:58px;
+    height:58px;
+    overflow: hidden;
+    text-indent: 999rem;
+    background: url(../img/save.png?__sprite) no-repeat;
+}
+button{
+    white-space: nowrap;
+    border: none;
+    background-color:transparent;
+}
+
+
+.s-back{
+    background: url(../img/back.png?__sprite) no-repeat;
+}
+.s-next{
+    background: url(../img/next.png?__sprite) no-repeat;
+}
+.photo-step[data-step="1"]~.photo-step{
+    display: none;
+}
+#shareMask{
+    opacity: 0;
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    z-index: 0;
+    color:#474d5b;
+    transition: opacity 0.6s;
+    text-align: center;
+    background: rgba(0,0,0,0.5);
+}
+#shareMask.open{
+    opacity: 1;
+    z-index: 300;
+}
+.bdsharebuttonbox h2{
+        font-size: 1.6rem;
+    line-height: 30px;
+    display: block;
+    border-bottom: 1px solid #d5d3d2;
+}
+.bdsharebuttonbox{
+    border-radius: 5px;
+    background: #e9e8e7;
+    position: absolute;
+    width:200px;
+    height: 200px;
+    top:50%;
+    left:50%;
+    -webkit-transform: translate3d(-50%,-50%,0);
+    -moz-transform: translate3d(-50%,-50%,0);
+    -ms-transform: translate3d(-50%,-50%,0);
+    -o-transform: translate3d(-50%,-50%,0);
+    transform: translate3d(-50%,-50%,0);
+}
+.bdsharebuttonbox .item{
+    width: 50%;
+    float:left;
+    height:70px;
+}
+.bdsharebuttonbox a{
+    display: block;
+    margin:5px auto!important;
+    float:none!important;
+}
+#shareMask  .close{
+    position: absolute;
+    top:-10px;
+    left:-10px;
+    width:19px;
+    height:19px;
+    overflow: hidden;
+    text-indent: 999rem;
+    background: url(../img/close.png?__sprite) no-repeat;
+}
+.red{
+    font-weight: bold;
+    color:#cc0514;
+    font-size: 18px;
+}
+
+.page-inner{
+    width:320px;
+    margin: 0 auto;
+}
+.s-back{
+    float:left;
+    margin-left: 25px;
+}
+.s-next,.s-ok{
+    float:right;
+    margin-right: 25px;
+}
+.input-box{
+    display: inline-block;
+    color:#cc0514;
+    margin-left: 15px;
+    font-size:18px;
+    float:left;
+    text-align: left;
+}
+#myVow,#inputLabel{
+    color:#333333;
+    width:145px;
+    height: 18px;
+    border:none;
+    background: transparent;
+    border-bottom:1px solid #cc0514;
+    font-size: 14px;
+}
+#inputLabel{
+    border: none;
+}
+input::-webkit-input-placeholder { color:#333333; }
+
+#saveAndShare{
+    margin-top: 10px;
+    float:right;
+    margin-right: 25px;
+}
+.text-box h2{
+    display: inline-block;
+}
+.photo-step{
+    /*border: 2px solid red;*/
+    margin: 20px auto 0;
+}
+@media screen and (max-height: 503px)  {
+    [data-step="3"]  button,[data-step="4"]  button {
+        margin-top: 29px;
+    }
+    [data-step="2"]  button {
+        margin-top: 4px;
+    }
+    .photo-step h2{
+        display: inline-block;
+    }
+    .photo-step  .left-text{
+        text-align: left;
+        float:left;
+        margin-left: 25px;
+        display: inline-block;
+    }
+    .takeBox {
+        float: right;
+        margin-right: 25px;
+        display: inline-block;
+    }
+}
+
+@media screen and (min-height: 504px)  {
+    .photo-step{
+        /*border: 2px solid red;*/
+        margin: 40px auto 0;
+    }
+    .red{
+        line-height: 40px;
+    }
+    [data-step="2"]  button {
+        margin-top: 60px;
+    }
+    [data-step="3"]  button {
+        margin-top: 100px;
+    }
+    [data-step="3"] button.s-ok{
+        margin-top: 102px;
+    }
+    [data-step="4"]  button {
+        margin-top: 29px;
+    }
+}
+.left{
+    text-align: left!important;
+}
+/*button,.takeBox{
+    background-size: 100%!important;
+}*/
+
+*{
+    outline: none;
+}

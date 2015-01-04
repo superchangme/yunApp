@@ -1,0 +1,34 @@
+<div>
+
+</div>
+<div class="bdsharebuttonbox" data-tag="share_1">
+    <a class="bds_qzone" data-cmd="qzone" ></a>
+    <a class="bds_weixin" ></a>
+    <a class="bds_tqq" data-cmd="tqq"></a>
+    <a class="bds_tsina" data-cmd="tsina"></a>
+</div>
+<script>
+    function loadShare(text,desc,url,bdPic){
+        var shareJs=document.getElementById("bShareJs");
+        shareJs&&shareJs.parentNode.removeChild(shareJs);
+        window._bd_share_main=undefined;
+        window._bd_share_is_recently_loaded=false;
+        window._bd_share_config = {
+            common : {
+                bdText : text,
+                bdDesc : desc,
+                bdUrl : url,
+                bdPic : bdPic
+            },
+            share : [{
+                "bdSize" : 32
+            }]
+        };
+        with(document) {
+            var script = (getElementsByTagName('head')[0] || body).appendChild(createElement('script'));
+            script.id = "bShareJs";
+            script.src = 'http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)
+        };
+    }
+    loadShare("123","tttt","http","hsssttp://img0.bdstatic.com/img/image/4c15cc0087ec7f5b700b49401d0e2a681418614198.jpg")
+    </script>

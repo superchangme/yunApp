@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/app2.css">
+    </head>
+    <body>
+    <div class="scr page_loading">
+        <div id="" class="loadingTxt">即将进入...</div>
+        <div id="block_1" class="barlittle"></div>
+        <div id="block_2" class="barlittle"></div>
+        <div id="block_3" class="barlittle"></div>
+        <div id="block_4" class="barlittle"></div>
+        <div id="block_5" class="barlittle"></div>
+    </div>
+    <div id="waitLoad">
+        <div class="queue-loading"><span class="sp1"></span><span class="sp2"></span><span class="sp3"></span>
+            </div>
+        <div class="text"><span class="more"></span>稍等,片刻就好</div>
+    </div>
+
+    <audio src="source/music.mp3" id="bgAudio" autoplay="" loop="" ></audio>
+    <div class="scr volume">
+        <button class="volumeOff sprite volumeAll" id="musicBtn">
+
+        </button>
+    </div>
+    <div class="main" id="app">
+        <div class="page page_1 current" data-hash="page_1"><!--111111111111111111111111111111111111111111111111111111111111111111111111111111111-->
+    <h1>第一页</h1>
+        </div>
+
+        <div class="page page_2"  data-hash="page_2"><!--222222222222222222222222222222222222222222222222222222222222222222222222222222222-->
+            <h1>第二页</h1>
+
+        </div>
+        <div class="page page_3"  data-hash="page_3">
+            <h1>第三页</h1>
+            <!--333333333333333333333333333333333333333333333333333333333333333333333333333333333-->
+        </div>
+        <div class="page page_4"  data-hash="page_4">    <h1>第四页</h1>
+        </div>
+        <div class="page page_5"  data-hash="page_5">
+            <div class="page-inner">
+                <div class="photo-box">
+                    <canvas id="canvasContainer"></canvas>
+                    <img src="img/photo-demo.jpg"/>
+                </div>
+                <div class="text-box">
+                    <div class="photo-step clearfix" data-step="1">
+                        <h2 class="left-text">永远相信<br/>
+                            美好的事情即将发生<br/>
+                            <span class="red">2015，______  I CAN!</span>
+                        </h2>
+                        <div class="takeBox">
+                            <input type="file" id="takePhoto" class="right-op" accept="image/*" >
+                        </div>
+                    </div>
+                    <div class="photo-step clearfix" data-step="2">
+                        <button class="s-back">重选照片</button>
+                        <h2 class="left">拖动，缩放图片
+                            <br/>至最佳理想位置</h2>
+                        <button class="s-next">添加宣言</button>
+                    </div>
+                    <div class="photo-step clearfix" data-step="3">
+                        <button class="s-back">重选照片</button>
+                        <div class="input-box">
+                            2015,<br/>
+                            <input placeholder="请输入你的宣言" id="myVow" type="text"/><br/>
+                            I CAN!
+                        </div>
+                        <button class="s-ok">填好了宣言</button>
+                    </div>
+                    <div class="photo-step clearfix" data-step="4">
+                        <button class="s-back">重写宣言</button>
+                        <div class="input-box">
+                            2015,
+                            <div id="inputLabel"></div>
+                            I CAN!
+                        </div>
+                        <button class="s-save" id="saveAndShare">保存分享</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="shareMask" >
+        <div class="bdsharebuttonbox" data-tag="share_1">
+            <button class="close">关闭分享</button>
+            <h2>分享到</h2>
+            <div class="item">
+                <a class="bds_qzone" data-cmd="qzone" ></a>
+                <div>QQ空间</div>
+            </div>
+            <div class="item">
+                <a class="bds_weixin" ></a>
+                <div>朋友圈</div>
+            </div>
+            <div class="item">
+                <a class="bds_tqq" data-cmd="tqq"></a>
+                <div>腾讯微博</div>
+            </div>
+            <div class="item">
+                <a class="bds_tsina" data-cmd="tsina"></a>
+                <div>新浪微博</div>
+            </div>
+        </div>
+    </div>
+    <script src="js/vendor/jquery-1.10.2.min.js"></script>
+    <!--<script >
+        var Zepto=jQuery.noConflict();
+    </script>-->
+    <script src="js/vendor/zepto.touch.js"></script>
+    <script src="js/vendor/zepto.fx.js"></script>
+    <script src="js/vendor/jquery-1.10.2c.min.js"></script>
+    <script src="js/vendor/hammer.min.js"></script>
+    <script src="js/vendor/hammer.fakemultitouch.js"></script>
+    <script src="js/vendor/hammer.showtouches.js"></script>
+    <script src="js/vendor/jcanvas.js"></script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+     /*       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');*/
+        </script>
+    </body>
+</html>
