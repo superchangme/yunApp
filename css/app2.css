@@ -79,6 +79,9 @@ body{
     z-index: 2;
     opacity: 1;
 }
+.page{
+    opacity: 0;
+}
 .page.active{
     z-index: 3;
     opacity: 1;
@@ -87,27 +90,7 @@ body{
     display: none;
 }
 
-/*
-.page_1{
-    background: blue!important;
-}
-.page_2{
-    background: red!important;
-}
-.page_3{
-    background: yellow!important;
-}
-.page_4{
-    background: green!important;
-}
-.page_5{
-    background: salmon!important;
-}
-*/
-
 .page{
-   /* background: url(../img/bg.jpg) no-repeat center;
-    background-size: 100% 100%;*/
     float:left;
     top:0;
     left:0;
@@ -133,23 +116,29 @@ p{
     top: 1.3rem;
     left: auto;
 }
-.volumeOff.sprite,.volumeOn.sprite{
+.volumeOff{
+}
+.volumeOn{
+}
+.volumeOff,.volumeOn{
+    background-image: url(../img/volume.png?__sprite);
+    background-repeat: no-repeat;
     background-color: transparent;
     border: none;
     outline: none;
     padding: 0;
-    -webkit-transform-origin: 50% 50%;
-
+    height: 100%;
+    width: 100%;
 }
-.volumeOff{
+.volumeOn{
     -webkit-animation: reverseRotataZ 1.2s infinite linear ;
 }
 @-webkit-keyframes reverseRotataZ{
     0%{
-        -webkit-transform: rotateZ(0deg) scale(0.5);;
+        -webkit-transform: rotateZ(0deg) ;
     }
     100%{
-        -webkit-transform: rotateZ(-360deg) scale(0.5);;
+        -webkit-transform: rotateZ(-360deg) ;
     }
 }
 /*///////////////////////////////////////////////////////////////      全局 字体大小 属性       //////*/
@@ -197,289 +186,6 @@ h6{
     color: #fff;
     position: relative;
 }
-/*///////////////////////////////////////////////////////////////      page1  飞机       //////*/
-#plane .frame-inner{
-    width: 56%;
-}
-.current #plane.animate{
-    -webkit-animation:plane 1.8s 0.2s 1 ease-in-out both  ;
-}
-#plane{
-    -webkit-transform:translateX(-100%);
-}
-@-webkit-keyframes plane{
-    0%{
-        -webkit-transform:translateX(-100%) translateY(40%) scaleX(0.3) scaleY(0.3);
-    }
-    100%{
-        -webkit-transform:translateX(29%) translateY(10%) scaleX(1) scaleY(1);
-    }
-}
-/*///////////////////////////////////////////////////////////////      page1  圆圈箭头       //////*/
-#circle{
-    -webkit-transform:translateX(50%) translateY(87%);
-}
-#circle .frame-inner{
-    width: 10.4%;
-    left: -5.2%;
-}
-
-
-
-#arrow .frame-inner{
-    width: 4.6%;
-    left: -2.3%;
-}
-.current #arrow.animate{
-    -webkit-animation: arrow 0.9s  linear infinite;
-}
-#arrow{
-    opacity: 0;
-    -webkit-transform:translateX(50%) translateY(91%);
-}
-@-webkit-keyframes arrow{
-    0%, 30% {
-        opacity: 0;
-        -webkit-transform: translate(50%, 91%);
-    }
-    60% {
-        opacity: 1;
-        -webkit-transform:  translate(50%, 89%);
-    }
-    100% {
-        opacity: 0;
-        -webkit-transform:  translate(50%, 87%);
-    }
-}
-
-
-/*///////////////////////////////////////////////////////////////      page1  底部树枝       //////*/
-#tree .frame-inner{
-    width: 100%;
-    bottom: 0;
-    position: absolute; bottom: 0%;
-}
-.current #tree.animate{
-    -webkit-animation:tree 1.2s 0s 1 ease-in-out both  ;
-}
-#tree{
-    opacity: 0;
-}
-@-webkit-keyframes tree{
-    0%{
-        opacity: 0;
-        -webkit-transform:translateY(10%);
-    }
-    100%{
-        opacity: 1;
-        -webkit-transform:translateY(0%);
-    }
-}
-/*///////////////////////////////////////////////////////////////      page1  两行文字       //////*/
-/* 初始化  （位置 不透明度 缩放）*/
-#textBox1{
-    -webkit-transform:translateX(-100%);/* 默认水平偏移  从左到右*/
-    top: 37%;
-}
-/* 装载容器 属性*/
-#textBox1 .frame-inner{
-    width: 100%;
-    margin-left: -6rem
-}
-/* 正在运动中*/
-.current #textBox1.animate{
-    -webkit-animation:textBox1 1s 0.9s 1 ease-in-out both  ;
-}
-@-webkit-keyframes textBox1{
-    0%{
-        -webkit-transform:translateX(-100%);
-    }
-    100%{
-        -webkit-transform:translateX(0%);
-    }
-}
-
-
-
-#textBox2{
-    -webkit-transform:translateX(100%);
-    top: 37%;
-}
-#textBox2 .frame-inner{
-    width: 100%;
-    margin-top: 6.5rem;
-    margin-left: 2rem;
-}
-.current #textBox2.animate{
-    -webkit-animation:textBox2 1s 0.9s 1 ease-in-out both  ;
-}
-@-webkit-keyframes textBox2{
-    0%{
-        -webkit-transform:translateX(100%);
-    }
-    100%{
-        -webkit-transform:translateX(0%);
-    }
-}
-
-/*///////////////////////////////////////////////////////////////      page2  ps图       //////*/
-#ps .frame-inner{
-    width: 16.8%;
-}
-/*位置定位*/
-#ps {
-    -webkit-transform:translateX(24%) translateY(37.5%);
-}
-
-/*frame inner 内部的元素自定义动画*/
-.current #ps.animate img{
-    -webkit-animation:ps 0.7s 0s 1 ease-in-out both  ;
-}
-#ps.animate img{
-    opacity: 0;
-}
-@-webkit-keyframes ps{
-    0%{
-        opacity: 0;
-        -webkit-transform: scale(0.05) ;
-    }
-    50%{
-        opacity: 1;
-        -webkit-transform: scale(1.05) ;
-    }
-    70%{
-        -webkit-transform: scale(0.9) ;
-    }
-    100%{
-        opacity: 1;
-        -webkit-transform: scale(1) ;
-    }
-}
-/*///////////////////////////////////////////////////////////////      page2  ai图       //////*/
-#ai .frame-inner{
-    width: 17%;
-}
-/*位置定位*/
-#ai {
-    -webkit-transform:translateX(38%) translateY(58%);
-}
-/*frame inner 内部的元素自定义动画*/
-.current #ai.animate img{
-    -webkit-animation:ai 0.7s 0.2s 1 ease-in-out both  ;
-}
-#ai.animate img{
-    opacity: 0;
-}
-@-webkit-keyframes ai{
-    0%{
-        opacity: 0;
-        -webkit-transform: scale(0.05) ;
-    }
-    50%{
-        opacity: 1;
-        -webkit-transform: scale(1.05) ;
-    }
-    70%{
-        -webkit-transform: scale(0.9) ;
-    }
-    100%{
-        opacity: 1;
-        -webkit-transform: scale(1) ;
-    }
-}
-
-/*///////////////////////////////////////////////////////////////      page2  怪物       //////*/
-#master .frame-inner{
-    width: 34%;
-}
-.current #master.animate{
-    -webkit-animation:master 1.2s .2s 1 ease-in-out both  ;
-}
-#master{
-    opacity: 0;
-}
-#master{
-    -webkit-transform:translateX(62%) translateY(35%);
-}
-@-webkit-keyframes master{
-    0%{
-        opacity: 0;
-        -webkit-transform:translateX(65%) translateY(35%);
-    }
-    100%{
-        opacity: 1;
-        -webkit-transform:translateX(62%) translateY(35%);
-    }
-}
-
-/*///////////////////////////////////////////////////////////////      page2  恐龙       //////*/
-#dinosaur .frame-inner{
-    width: 53%;
-}
-.current #dinosaur.animate{
-    -webkit-animation:dinosaur 1.2s .2s 1 ease-in-out both  ;
-}
-#dinosaur{
-    opacity: 0;
-}
-#dinosaur{
-    -webkit-transform:translateY(70%);
-}
-@-webkit-keyframes dinosaur{
-    0%{
-        opacity: 0;
-        -webkit-transform:translateX(-3%) translateY(70%);
-    }
-    100%{
-        opacity: 1;
-        -webkit-transform:translateX(0%) translateY(70%);
-    }
-}
-/*///////////////////////////////////////////////////////////////      page2  两行文字       //////*/
-#textBox3{
-    -webkit-transform:translateX(100%);
-    top: -5%;
-    left: 19%;
-}
-#textBox3 .frame-inner{
-    width: 100%;
-    margin-top: 6.5rem;
-    text-align: left;
-}
-.current #textBox3.animate{
-    -webkit-animation:textBox3 1s 0s 1 ease-in-out forwards  ;
-}
-@-webkit-keyframes textBox3{
-    0%{
-        -webkit-transform:translateX(100%);
-    }
-    100%{
-        -webkit-transform:translateX(0%);
-    }
-}
-
-#textBox4{
-    -webkit-transform:translateX(100%);
-    top: 7%;
-    left: 19%;
-}
-#textBox4 .frame-inner{
-    width: 100%;
-    margin-top: 6.5rem;
-    text-align: left;
-}
-.current #textBox4.animate{
-    -webkit-animation:textBox4 1s 0s 1 ease-in-out forwards  ;
-}
-@-webkit-keyframes textBox4{
-    0%{
-        -webkit-transform:translateX(100%);
-    }
-    100%{
-        -webkit-transform:translateX(0%);
-    }
-}
-
 
 /*///////////////////////////////////////////////////////////////      屏幕宽度超过321  执行的属性 多屏兼容设置      //////*/
 @media screen and (min-width:321px){
@@ -748,6 +454,17 @@ canvas.eraser{
         transform: translate3d(16px,0,0);
     }
 }
+
+@-webkit-keyframes arrowUp {
+    0%   { opacity: 1;-webkit-transform:translate3d(0px,40px,0);  }
+    60% { opacity: 1;-webkit-transform:translate3d(0,-10px,0); }
+    100% { opacity:0;-webkit-transform:translate3d(0px,-15px,0); }
+}
+@keyframes arrowUp {
+    0%   { opacity: 1;transform:translate3d(0px,40px,0);  }
+    60% { opacity: 1;transform:translate3d(0,-10px,0); }
+    100% { opacity:0;transform:translate3d(0px,-15px,0); }
+}
 #waitLoad{
     opacity: 0;
     position: absolute;
@@ -984,10 +701,100 @@ input::-webkit-input-placeholder { color:#333333; }
 .left{
     text-align: left!important;
 }
-button,.takeBox{
-    background-size: 100%!important;
-}
+
 
 *{
     outline: none;
+}
+.arrow-slideup{
+    opacity: 0;
+    position: absolute;
+    bottom: 30px;
+    left:50%;
+    margin-left: -13px;
+    width:27px;
+    height:18px;
+    background: url(../img/arrow.png?__sprite) no-repeat;
+}
+.current .arrow-slideup{
+    animation: arrowUp 1.2s 1.5s linear infinite none;
+    -webkit-animation: arrowUp 1.2s 1.5s linear infinite none;
+}
+
+.current .text-box.animate {
+    -webkit-animation: boxLeft 1s 0s 1 ease-in-out forwards;
+}
+@keyframes boxLeft{
+    0%{
+        transform:translateX(100%);
+    }
+    100%{
+        transform:translateX(0%);
+    }
+}
+@-webkit-keyframes boxLeft{
+    0%{
+        -webkit-transform:translateX(100%);
+    }
+    100%{
+        -webkit-transform:translateX(0%);
+    }
+}
+.page{
+    background-size: cover!important;
+}
+.page_1{
+    background: url(../img/demo_bg_1.jpg) no-repeat center top;
+}
+.page_2{
+    background: url(../img/demo_bg_2.jpg) no-repeat center bottom;
+}
+.page_3{
+    background: url(../img/demo_bg_3.jpg) no-repeat center bottom;
+}
+.page_4{
+    background: url(../img/demo_bg_4.jpg) no-repeat center bottom;
+}
+.page_5{
+    background: url(../img/demo_bg_5.jpg) no-repeat center center;
+}
+.text-intro{
+    position:absolute;
+    bottom:120px;
+    left:50px;
+}
+
+.page h3{
+    margin: 0;
+    text-align: left;
+    color:white;
+    font-size:16px;
+}
+.text-can{
+    margin: 0;
+    opacity: 0;
+    position: absolute;
+    bottom: 20px;
+    left:50px;
+    width:125px;
+    height:62px;
+    background: url(../img/can_1.png?__sprite) no-repeat;
+}
+.text-intro p.t1,.text-intro p.t2{
+    opacity: 0;
+}
+.current .text-intro p.t1{
+    opacity: 1;
+    transition: opacity 1s  linear 0.3s;
+}
+.current .text-intro p.t2{
+    opacity: 1;
+    transition: opacity 1s  linear 1.3s;
+}
+.current .text-can{
+    opacity: 1;
+    transition: opacity 1s  linear 2.6s;
+}
+button,.takeBox,.arrow-slideup,.text-can{
+    background-size: 100%!important;
 }

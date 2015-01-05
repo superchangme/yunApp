@@ -122,6 +122,8 @@ jQuery(function($){
                 }
             }else if(!(g.current==1&&(!pageSelector||pageSelector==".page_1"))){
                 pageAnimate($pages.eq(0),"down");
+            }else{
+                pageAnimate($pages.eq(0),"down");
             }
         }
         loadPage();
@@ -148,15 +150,15 @@ jQuery(function($){
 //            $('.page_2').addClass("current");
         //声音播放
         $("#musicBtn").on("switch",function(){
-            if($(this).hasClass("volumeOff"))
+            if($(this).hasClass("volumeOn"))
             {
                 document.getElementById("bgAudio").pause();
-                $(this).removeClass("volumeOff").addClass("volumeOn");
+                $(this).removeClass("volumeOn").addClass("volumeOff");
 
             }else
             {
                 document.getElementById("bgAudio").play();
-                $(this).removeClass("volumeOn").addClass("volumeOff");
+                $(this).removeClass("volumeOff").addClass("volumeOn");
             }
         }).on("click",function(){
             $(this).trigger("switch")
@@ -359,9 +361,9 @@ jQuery(function($){
     //保存分享
     saveAndShare.bind("click",function(){
             var data=canvasContainer[0].toDataURL("image/jpeg",0.5);
-        var img=new Image;
+        /*var img=new Image;
         img.src=data;
-        $(".photo-box").append(img);
+        $(".photo-box").append(img);*/
              var work=WorkMan("share");
         //上传图片给vion
         if(IS_SAVE){
@@ -373,10 +375,11 @@ jQuery(function($){
                 if(result&&result.mess=="上传成功"){
                     PHOTO_PATH=result.filePath;
                     IS_SAVE=true;
-                    var script=loadShare("在云端","2015\n"+myVow.val()+"\nI CAN!","http",PHOTO_PATH);
+                    window.location.href=result.prevewPath;
+                   /* var script=loadShare("在云端","2015\n"+myVow.val()+"\nI CAN!","http",PHOTO_PATH);
                     script.onload=function(){
                         work.resolve();
-                    }
+                    }*/
                 };
             }).error(function(err) {  work.reject(err);})
         }

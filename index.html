@@ -27,17 +27,27 @@
 
     <audio src="source/music.mp3" id="bgAudio" autoplay="" loop="" ></audio>
     <div class="scr volume">
-        <button class="volumeOff sprite volumeAll" id="musicBtn">
+        <button class="volumeOn" id="musicBtn">
 
         </button>
     </div>
     <div class="main" id="app">
-        <div class="page page_1 current" data-hash="page_1"><!--111111111111111111111111111111111111111111111111111111111111111111111111111111111-->
-    <h1>第一页</h1>
+        <div class="page page_1" data-hash="page_1">
+            <i class="arrow-slideup"></i>
+            <h3 class="text-intro">
+                <p class="t1">
+                    当你还在向老板汇报工作时
+                </p>
+                <p class="t2">爸妈已经在为你琢磨今天的晚饭
+                </p>
+
+            </h3>
+            <h4 class="text-can"></h4>
         </div>
 
         <div class="page page_2"  data-hash="page_2"><!--222222222222222222222222222222222222222222222222222222222222222222222222222222222-->
             <h1>第二页</h1>
+            <i class="arrow-slideup"></i>
 
         </div>
         <div class="page page_3"  data-hash="page_3">
@@ -46,7 +56,9 @@
         </div>
         <div class="page page_4"  data-hash="page_4">    <h1>第四页</h1>
         </div>
-        <div class="page page_5"  data-hash="page_5">
+        <div class="page page_5"  data-hash="page_4">    <h1>第四页</h1>
+        </div>
+        <div class="page page_6"  data-hash="page_5">
             <div class="page-inner">
                 <div class="photo-box">
                     <canvas id="canvasContainer"></canvas>
@@ -112,11 +124,13 @@
             </div>
         </div>
     </div>
+<!--
     <script src="js/vendor/jquery-1.10.2.min.js"></script>
+-->
     <!--<script >
         var Zepto=jQuery.noConflict();
     </script>-->
-    <script src="js/vendor/zepto.touch.js"></script>
+    <!--<script src="js/vendor/zepto.touch.js"></script>
     <script src="js/vendor/zepto.fx.js"></script>
     <script src="js/vendor/jquery-1.10.2c.min.js"></script>
     <script src="js/vendor/hammer.min.js"></script>
@@ -124,8 +138,8 @@
     <script src="js/vendor/hammer.showtouches.js"></script>
     <script src="js/vendor/jcanvas.js"></script>
         <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
-
+        <script src="js/main.js"></script>-->
+<script src="pkg/lib.js"></script>
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
      /*       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
