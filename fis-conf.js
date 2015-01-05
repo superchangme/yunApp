@@ -13,7 +13,7 @@ fis.config.set('pack', {
           'js/vendor/hammer.min.js',
           'js/vendor/hammer.fakemultitouch.js',
           'js/vendor/hammer.showtouches.js',
-          'js/vendor/jcanvas.js',
+          'js/vendor/jcanvas.min.js',
           'js/plugins.js',
           'js/main.js'
      ],

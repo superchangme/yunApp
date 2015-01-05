@@ -6,27 +6,139 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/app2.css">
+    <script>
+        var shareTitle;
+        if(window.location.hash!="#owner"){
+          window.location.title="2015说到做到，I CAN"
+        }else{
+          window.location.hash="";
+        }
+    </script>
+    <style>
+        html,body{
+            font-size: 10px;
+            -webkit-text-size-adjust:100%;
+            padding: 0;
+            margin: 0;
+            font-family:Tahoma,Arial,Roboto,"Droid Sans","Helvetica Neue","Droid Sans Fallback","Heiti SC",sans-self;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .page{
+            height:100%;
+        }
+        *{
+         margin:0;
+        }
+        .page{
+            position: relative;
+            z-index: 1;
+        }
+        .page-inner{
+            border: 3px solid white;
+        }
+        img{
+            width:100%;
+            height:100%;
+        }
+        #shareMask{
+            opacity: 0;
+            position: absolute;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            z-index: -1;
+            color:#474d5b;
+            transition: opacity 0.6s;
+            text-align: center;
+            background: rgba(0,0,0,0.5);
+        }
+        #shareMask.open{
+            opacity: 1;
+            z-index: 300;
+        }
+        h2{
+            margin: 0.7rem 0 1.2rem;
+        }
+        .bdsharebuttonbox h2{
+            font-size: 1.6rem;
+            line-height: 30px;
+            display: block;
+            border-bottom: 1px solid #d5d3d2;
+        }
+        .bdsharebuttonbox{
+            border-radius: 5px;
+            background: #e9e8e7;
+            position: absolute;
+            width:200px;
+            height: 200px;
+            top:50%;
+            left:50%;
+            -webkit-transform: translate3d(-50%,-50%,0);
+            -moz-transform: translate3d(-50%,-50%,0);
+            -ms-transform: translate3d(-50%,-50%,0);
+            -o-transform: translate3d(-50%,-50%,0);
+            transform: translate3d(-50%,-50%,0);
+        }
+        .bdsharebuttonbox .item{
+            width: 50%;
+            float:left;
+            height:70px;
+        }
+        .bdsharebuttonbox a{
+            display: block;
+            margin:5px auto!important;
+            float:none!important;
+        }
+        button{
+            border: none;
+            background: transparent;
+        }
+        #shareMask  .close{
+            position: absolute;
+            top:-10px;
+            left:-10px;
+            width:19px;
+            height:19px;
+            overflow: hidden;
+            text-indent: 999rem;
+            background: url(img/close.png) no-repeat;
+            background-size: 100%;
+        }
+        #goMake,#goShare{
+            width: 58px;
+            height:58px;
+        }
+        .sprite-wrapper{
+            margin: 20px auto;
+            text-align: center;
+        }
+        .sprite {vertical-align:top;text-indent:999rem;color: transparent;display:inline-block; overflow:hidden; background-repeat: no-repeat;background-image:url(img/sprite@1x.png);}
+        .close {width:19px; height:18px; background-position: -182px -2px}
+        .make {width:58px; height:58px; background-position: -2px -2px}
+        .share {margin-right:2rem;width:58px; height:58px; background-position: -62px -2px}
+        .upload {width:58px; height:58px; background-position: -122px -2px}
+    </style>
 </head>
 <body>
 <div class="main" id="app">
     <div class="page page_1"  data-hash="page_5">
         <div class="page-inner">
-            <div class="photo-box">
+            < div class="photo-box">
                 <img src="img/photo-demo.jpg"/>
             </div>
-            <div>
-                <button id="goShare">我要分享</button>
-                <button>制作宣言</button>
+            <div class="sprite-wrapper">
+                <button id="goShare" class="sprite share">我要分享</button>
+                <a id="goMake" href="" class="sprite make">制作宣言</a>
             </div>
         </div>
     </div>
 </div>
 <div id="shareMask" >
     <div class="bdsharebuttonbox" data-tag="share_1">
-        <button id="close" class="close">关闭分享</button>
+        <button id="close" class="share close">关闭分享</button>
         <h2>分享到</h2>
         <div class="item">
             <a class="bds_qzone" data-cmd="qzone" ></a>
@@ -58,9 +170,9 @@
     window._bd_share_config = {
         common : {
             bdText : window.location.title,
-            bdDesc : '好好玩快来吧',
+            bdDesc : '2015,I CAN,制作我的宣言！',
             bdUrl : window.location.href,
-            bdPic : "img/photo-demo.jpg"
+            bdPic : "img/photo-demo.jpg"//交给vion
         },
         share : [{
             "bdSize" : 32

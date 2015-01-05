@@ -1,14 +1,11 @@
 
 jQuery(function($){
-        var app=g={
-                changeHash:false,
-                currentPage:null,
-                current:1,
-                saveUrl:"http://localhost/temp/yunApp/index.php/index/upload",
-                shareUrl:"http://localhost/temp/yunApp/index.php/index/shareCounting"
-            },hashMap={"#page_1":".page_1","#page_2":".page_2","#page_3":"page_3","#page_4":".page_4","#page_5":".page_5"},
+
+
+    var app=g=window.app||{},hashMap={"#page_1":".page_1","#page_2":".page_2","#page_3":".page_3","#page_4":".page_4","#page_5":".page_5","#page_6":".page_6"},
             $pages=$(".main .page"),
             isAnimate=false,
+            DEMO_SRC="img/photo-demo.png",
             $current=$pages.filter(".current"),
             effect="cubic-bezier(0.42,0,0.58,1)",waitLoad=$("#waitLoad"),
             sharePhoto=$(".photo-box img"),
@@ -29,7 +26,14 @@ jQuery(function($){
             FROM_ID,
             SHARE_COUNT,
             SHARE_ID;
-
+            $.extend(app,{
+                changeHash:false,
+                currentPage:null,
+                current:1
+            });
+    var IMG_CAN=new Image,IMG_2015=new Image;
+    IMG_CAN.src='img/can.png';
+    IMG_2015.src='img/2015.png';
         var posX=0, posY=0,
             lastPosX=0, lastPosY=0,
             bufferX=0, bufferY=0,
@@ -167,6 +171,7 @@ jQuery(function($){
             $('.page_loading').animate({opacity:0},600,"linear",function(){
                 $('.page_loading').remove();
             });
+
         };
         //相册搞起
         var myWidth=285;
@@ -215,7 +220,7 @@ jQuery(function($){
             layer:true,
             groups:["textGroup"],
             name:"text-can",
-            source: 'img/can.png',
+            source: IMG_CAN,
             x: x1, y: 270,
             scale:1/2,
             fromCenter: false
@@ -224,7 +229,7 @@ jQuery(function($){
             layer:true,
             groups:["textGroup"],
             name:"text-2015",
-            source: 'img/2015.png',
+            source: IMG_2015,
             x: x1, y: 208,
             scale:1/2,
             fromCenter: false
@@ -372,16 +377,26 @@ jQuery(function($){
             //删除字符串前的提示信息 "data:image/png;base64,"
             var b64 = data.substring( 22 );
             $.post(app.saveUrl,{image:{imgData:data}},function(result){
-                if(result&&result.mess=="上传成功"){
-                    PHOTO_PATH=result.filePath;
+                //id 参与者id
+                // path图片地址
+                // url分享链接
+                // result结果
+                if(result&&result.result+""=="true"){
+                    //PHOTO_PATH=result.filePath;
                     IS_SAVE=true;
-                    window.location.href=result.prevewPath;
+                    window.location.href=result.url;
                    /* var script=loadShare("在云端","2015\n"+myVow.val()+"\nI CAN!","http",PHOTO_PATH);
                     script.onload=function(){
                         work.resolve();
                     }*/
-                };
-            }).error(function(err) {  work.reject(err);})
+                }else{
+                    if(window.confirm("上传出错了，再试一次吧！")){
+                        saveAndShare.click();
+                    }else{
+                        work.reject();
+                    }
+                }
+            },"json").error(function(err) {  work.reject(err);})
         }
     });
     $shareClose.bind("click",function(){
@@ -393,7 +408,7 @@ jQuery(function($){
         }
      //   if(e.code==)
     });
-    //拿图片链接
+/*    //拿图片链接
     $.getJSON("shareCounting","id=",function(data){
          if(typeof data===Object){
              if(data.path){
@@ -406,7 +421,8 @@ jQuery(function($){
                  FROM_ID=datg.id;
              }
          }else{
-            //wrong
+             sharePhoto.attr("src",data.path);
+            //wrong  DEMO_SRC
          }
-    }).error(function(err) {errorLogs.push(err); });
+    }).error(function(err) {errorLogs.push(err); });*/
     });
