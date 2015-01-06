@@ -356,8 +356,8 @@ jQuery(function($){
         return work;
     }
         Zepto(document).delegate(".s-back","click",function(){
-            var step=parseInt($(this).parent(".photo-step").data("step")),prev=step-1;
-            goToStep(prev);
+           // var step=parseInt($(this).parent(".photo-step").data("step")),prev=step-1;
+            goToStep(1);
         });
     Zepto(document).delegate(".s-next,.s-ok","click",function(){
         var step=parseInt($(this).parent(".photo-step").data("step")),prev=step+1;
