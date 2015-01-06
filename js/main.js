@@ -185,6 +185,7 @@ jQuery(function($){
         function init(src)
         {
             canvasContainer.removeLayers();
+            canvasContainer.clearCanvas();
             var targetWidth=285;
             var img=new Image;
             img.src=src;
