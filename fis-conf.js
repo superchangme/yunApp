@@ -10,9 +10,9 @@ fis.config.set('pack', {
           'js/vendor/zepto.touch.js',
           'js/vendor/zepto.fx.js',
           'js/vendor/jquery-1.10.2c.min.js',
-          'js/vendor/hammer.min.js',
+          'js/vendor/hammer.min.js',/*
           'js/vendor/hammer.fakemultitouch.js',
-          'js/vendor/hammer.showtouches.js',
+          'js/vendor/hammer.showtouches.js',*/
           'js/vendor/jcanvas.min.js',
           'js/plugins.js',
           'js/main.js'

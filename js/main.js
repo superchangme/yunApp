@@ -1,7 +1,6 @@
 
 jQuery(function($){
-
-
+    $("html").height(window.innerHeight);
     var app=g=window.app||{},hashMap={"#page_1":".page_1","#page_2":".page_2","#page_3":".page_3","#page_4":".page_4","#page_5":".page_5","#page_6":".page_6"},
             $pages=$(".main .page"),
             isAnimate=false,
@@ -47,13 +46,13 @@ jQuery(function($){
             drag_min_distance: 0
         });
 //test
-    if(!Hammer.HAS_TOUCHEVENTS && !Hammer.HAS_POINTEREVENTS) {
+    /*if(!Hammer.HAS_TOUCHEVENTS && !Hammer.HAS_POINTEREVENTS) {
         Hammer.plugins.showTouches();
     }
 
     if(!Hammer.HAS_TOUCHEVENTS && !Hammer.HAS_POINTEREVENTS) {
         Hammer.plugins.fakeMultitouch();
-    }
+    }*/
         hammertime.on('touch drag dragend transform', function(ev) {
             if(!LOCK_PHOTO){
                 manageMultitouch(ev);
@@ -61,7 +60,6 @@ jQuery(function($){
         });
 
         function manageMultitouch(ev){
-            console.log(ev.type)
             switch(ev.type) {
                 case 'touch':
                     last_scale = scale;
@@ -210,6 +208,8 @@ jQuery(function($){
                 });
             }
         }
+    //擦除文字
+
     //载入文字png
     function initTextPng(){
         if(canvasContainer.getLayerGroup('myBoxes')!=null){
@@ -310,6 +310,10 @@ jQuery(function($){
                case 3:
                    IS_SAVE=false;
                    PHOTO_PATH=null;
+                   $('canvas').setLayerGroup('textGroup', {
+                       alpha:0
+                   }).drawLayers().removeLayerGroup("textGroup");
+                   myVow.val('');
                    break;
                case 4:
                    if(!(len=GetLength($.trim(myVow.val())))){
