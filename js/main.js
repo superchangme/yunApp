@@ -122,13 +122,10 @@ jQuery(function($){
                     }
                     pageAnimate(pageEl,clas);
                 }
-            }else if(!(g.current==1&&(!pageSelector||pageSelector==".page_1"))){
-                pageAnimate($pages.eq(0),"down");
-            }else{
-                pageAnimate($pages.eq(0),"down");
+            }else/* if(!(g.current==1&&(!pageSelector||pageSelector==".page_1")))*/{
+                pageAnimate($pages.eq(0));
             }
         }
-        loadPage();
         document.addEventListener('touchmove', function (event) {
             event.preventDefault();
         }, false);
@@ -140,6 +137,11 @@ jQuery(function($){
             });
         function pageAnimate(next,clas){
             if(isAnimate){
+                return;
+            }
+            if(!clas){
+                next.addClass("current");
+                $current=next;
                 return;
             }
             next.length&&(isAnimate=true)&&recordState(next.data("hash"))&&Zepto(next).addClass("active "+clas).animate({translate3d:"0,0,0"},618,effect,function(){
@@ -168,8 +170,8 @@ jQuery(function($){
         window.onload=function(){
             $('.page_loading').animate({opacity:0},600,"linear",function(){
                 $('.page_loading').remove();
+                loadPage();
             });
-
         };
         //相册搞起
         var myWidth=285;
@@ -250,7 +252,7 @@ jQuery(function($){
                 name:"text-vow",
                 fillStyle: 'white',
                 x: 19, y: 258,
-                fontFamily:"sans-serif",
+                fontFamily:"Verdana,'Hiragino Sans GB ','microsoft yahei','Droid Sans Fallback','Roboto','Heiti SC',Arial,sans-serif",
                 fontSize: 18,
                 text: val,
                 fromCenter: false
