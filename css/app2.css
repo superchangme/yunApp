@@ -146,13 +146,16 @@ body{
 .page.current{
     z-index: 2;
     opacity: 1;
+    display: block;
 }
 .page{
     opacity: 0;
+    display: none;
 }
 .page.active{
     z-index: 3;
     opacity: 1;
+    display: block;
 }
 .frame{
     display: none;
@@ -177,7 +180,8 @@ p{
 
 /*///////////////////////////////////////////////////////////////       音乐播放        //////*/
 .volume.scr{
-    z-index:6000;
+    position: relative;
+    float: right;
     width: 22px;
     height: 22px;
     right: 2.0rem;
@@ -699,7 +703,7 @@ input::-webkit-input-placeholder { color:#333333; }
     left:50px;
     top: 100px;
     width:125px;
-    height:62px;
+    height:65px;
 }
 .page_1 .text-can{
     bottom: 68px;

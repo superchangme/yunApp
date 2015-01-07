@@ -1,4 +1,3 @@
-
 jQuery(function($){
     $("html").height(window.innerHeight);
     var app=g=window.app||{},hashMap={"#page_1":".page_1","#page_2":".page_2","#page_3":".page_3","#page_4":".page_4","#page_5":".page_5","#page_6":".page_6"},
@@ -20,8 +19,9 @@ jQuery(function($){
             $inputLabel=$("#inputLabel"),
             IS_SAVE=false,
             PHOTO_PATH,
-    saveAndShare=$("#saveAndShare"),
+            saveAndShare=$("#saveAndShare"),
             LOCK_PHOTO=false,
+            LOCK_PAGE=false,
             FROM_ID,
             SHARE_COUNT,
             SHARE_ID;
@@ -110,6 +110,9 @@ jQuery(function($){
         window.addEventListener("popstate",function(e){
             loadPage();
         });
+        Zepto(document).on("doubleTap",function(e){
+            e.preventDefault();
+        });
         function loadPage(){
             var pageSelector=hashMap[window.location.hash];
             if( g.changeHash==false&&pageSelector  ){
@@ -135,8 +138,14 @@ jQuery(function($){
         Zepto(document).swipeDown(function(){
                 pageAnimate($current.prev(".page"),"down");
             });
+        //touch 画布时暂停滑动手势
+/*        canvasContainer.on("touchstart",function(){
+            LOCK_PAGE=true;
+        }).on("touchend",function(){
+            LOCK_PAGE=false;
+        });*/
         function pageAnimate(next,clas){
-            if(isAnimate){
+            if(isAnimate||LOCK_PAGE){
                 return;
             }
             if(!clas){
@@ -181,7 +190,7 @@ jQuery(function($){
             canvasContainer.attr({width:myWidth,height:myHeight});
             canvasContainer.detectPixelRatio(function(ratio){
                 deviceRatio=ratio>2?ratio:2;
-            });
+            })
         });
         //加载照片
         function init(src)
@@ -300,9 +309,11 @@ jQuery(function($){
                 }else{
                     LOCK_PHOTO=true;
                 }
+                LOCK_PAGE=true;
             }else{
                 canvasContainer.hide();
                 sharePhoto.show();
+                LOCK_PAGE=false;
             }
            switch (step){
                case 1:
